@@ -4,10 +4,6 @@ export const ListElement = ({ news }) => {
   console.log({ news });
   const [pageNo, setPageNo] = useState(1);
 
-  useEffect(() => {
-    console.log(pageNo);
-  }, [pageNo]);
-
   const showNumber = 5;
   return (
     <>
