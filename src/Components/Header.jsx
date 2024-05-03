@@ -1,15 +1,20 @@
 import { useState } from "react";
+import Login from "./Login";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
+
+
 
 export const Header = ({ onsearchchange }) => {
-  // const [input,setinput]=useState("");
 
   return (
-    <div className="mb-4 md:w-200 bg-gray-100 ">
+      <div className="mb-4 md:w-200 bg-gray-100  flex  ">
       <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-        <h4 className=" text-1xl font-bold text-center ">Hacker News</h4>
+        <h4 className=" text-1xl font-bold text-left mr-2 mt-1 ">
+          Hacker News
+        </h4>
         <input
           type="search"
-          className="relative m-0 block flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+          className="relative m-0  mb-0 block flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
           placeholder="Search"
           aria-label="Search"
           aria-describedby="button-addon2"
@@ -35,6 +40,24 @@ export const Header = ({ onsearchchange }) => {
           </svg>
         </span>
       </div>
+
+
+      {/* <nav>
+        <div>
+    <NavLink to='login'>Login</NavLink>
     </div>
+    </nav> */}
+
+      <button
+          type="button"
+          className="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+       >
+         Login
+        </button>
+
+
+    </div>
+    
+
   );
 };
