@@ -7,8 +7,10 @@ export const ListElement = ({ news }) => {
   const showNumber = 5;
   return (
     <>
-      <div className=" bg-gray-300">
-        <ol className="list-decimal md:list-outside text-left  w-max">
+      <div  className=" mt-0 space-y-1 list-outside bg-sky-800/60 flex justify-center ">
+
+        {/* <ol className="list-none md:list-outside  text-center w-max  "> */}
+        <ol  className=" mt-0 w-3/5 space-y-1 list-outside bg-sky-800/0 flex flex-col justify-center">
           {news.map((news, index) => {
             if (
               index > (pageNo - 1) * showNumber &&
@@ -17,16 +19,17 @@ export const ListElement = ({ news }) => {
               return (
                 <div>
                   <li
-                    className="w-full border-b-2 border-neutral-100 py-4 dark:border-white/10"
+                    className="w-full border-b-2 text-left border-blue-950 py-4  mr-0"
                     key={news.objectID}
                   >
-                    <h3 className="text-neutral-700">
-                      <a className="text-neutral-700" href={news.url}>
-                        {" "}
+                   <div className="flex flex-row"> <p className="mr-2 text-xl font-bold">{index }.</p><h3 className="text-neutral-700 text-xl">
+                      <a className="text-neutral-900 hover:forced-color-adjust-none   hover:text-orange-400 active:text-red-700" href={news.url}>
+                        
                         {news.title}
                       </a>
                     </h3>
-                    <p className="text-orange-900">
+                    </div>
+                    <p className="text-orange-900 text-s">
                       {/* created_at*/}
                       {news.points} points by | {news.author} |{" "}
                       {news.updated_at} | {news.num_comments} comments

@@ -7,6 +7,9 @@ import { ListElement } from "./Components/List_Element";
 import { Header } from "./Components/Header";
 import { Input, initTWE } from "tw-elements";
 import Footer1 from "./Components/Footer1";
+
+import { Route, Routes } from "react-router-dom";
+import Login from "./Components/Login";
 initTWE({ Input }, { allowReinits: true });
 function App() {
   const [news, setNews] = useState([]);
@@ -42,12 +45,18 @@ function App() {
 
   return (
     <>
-      <div className="container items-center">
+      {/* <div className="container items-center"> */}
+      <div>
         <div>
           {/* so kann ich eine function in eine andere component rufen */}
           <Header onsearchchange={handelChange} />
         </div>
 
+      {/* <div >
+        <Routes>
+          <Route path="login" element={<Login />} />
+        </Routes>
+      </div> */}
         {Loading ? (
           <div className="mb-4 inline-block max-w-sm">
             <SpinnerRoundOutlined
@@ -63,8 +72,8 @@ function App() {
           </div>
         )}
       </div>
-
-      {/* <Footer1/> */}
+      
+      <Footer1 />
     </>
   );
 }
