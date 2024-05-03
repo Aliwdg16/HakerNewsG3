@@ -8,13 +8,16 @@ import { Header } from "./Components/Header";
 import { Input, initTWE } from "tw-elements";
 import Footer1 from "./Components/Footer1";
 
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./Components/Login";
 initTWE({ Input }, { allowReinits: true });
 function App() {
   const [news, setNews] = useState([]);
   const [Loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
+
+// const [loginA,setLogin]=useState()
+// const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -43,8 +46,16 @@ function App() {
     setSearch(e.target.value);
   };
 
+  
+  // const handleLogin = () => {
+  //     navigate('welcome');
+  //     setLogin();
+  // };
+
+
   return (
     <>
+            
       {/* <div className="container items-center"> */}
       <div>
         <div>
@@ -52,11 +63,15 @@ function App() {
           <Header onsearchchange={handelChange} />
         </div>
 
+
       {/* <div >
         <Routes>
           <Route path="login" element={<Login />} />
         </Routes>
       </div> */}
+
+
+
         {Loading ? (
           <div className="mb-4 inline-block max-w-sm">
             <SpinnerRoundOutlined
@@ -70,9 +85,12 @@ function App() {
           <div>
             <ListElement news={news} />
           </div>
-        )}
+        )
+        }
       </div>
-      
+
+
+
       <Footer1 />
     </>
   );
