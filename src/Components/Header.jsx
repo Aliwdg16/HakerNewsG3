@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-export const Header = ({ onLogin, onsearchchange }) => {
+export const Header = ({ onLogin, onSearchChange }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
     onLogin(); // Aufruf der übergebenen onLogin-Funktion
     navigate("/login"); // Navigieren zur Login-Seite
   };
+
+  const handelsearch1 =(e)=>{
+      onSearchChange(e.target.value);
+    
+  }
 
   return (
     <div className="mb-0 md:w-200 bg-gray-100  flex  ">
@@ -22,7 +28,7 @@ export const Header = ({ onLogin, onsearchchange }) => {
           placeholder="Search"
           aria-label="Search"
           aria-describedby="button-addon2"
-          onChange={onsearchchange}
+          onChange={handelsearch1}
         />
 
         <span
@@ -52,4 +58,8 @@ export const Header = ({ onLogin, onsearchchange }) => {
       </div>
     </div>
   );
+};
+Header.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+  onsearchchange: PropTypes.func.isRequired,
 };
