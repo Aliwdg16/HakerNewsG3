@@ -49,6 +49,7 @@ function App() {
   };
 
   return (
+    <div>
     <Router>
       <Header onLogin={handleLogin} onSearchChange={handelChange} />
 
@@ -76,7 +77,7 @@ function App() {
       </Routes>
       <Footer1 />
     </Router>
-  );
+    </div>  );
 }
 
 export default App;
