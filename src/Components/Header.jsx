@@ -9,6 +9,11 @@ export const Header = ({ onLogin, onsearchchange }) => {
     navigate("/login"); // Navigieren zur Login-Seite
   };
 
+  const handelChange1 =()=>{
+    onsearchchange();
+    
+  }
+
   return (
     <div className="mb-0 md:w-200 bg-gray-100  flex  ">
       <div className="relative mt-4  mb-4 flex w-full flex-wrap items-stretch">
@@ -22,7 +27,7 @@ export const Header = ({ onLogin, onsearchchange }) => {
           placeholder="Search"
           aria-label="Search"
           aria-describedby="button-addon2"
-          onChange={onsearchchange}
+          onChange={handelChange1}
         />
 
         <span
