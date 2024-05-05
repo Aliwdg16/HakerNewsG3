@@ -1,27 +1,23 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import axios, { isCancel, AxiosError } from "axios";
-import { SpinnerCircular, SpinnerRoundOutlined } from "spinners-react";
+import axios from "axios";
+import { SpinnerRoundOutlined } from "spinners-react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ListElement } from "./Components/List_Element";
 import { Header } from "./Components/Header";
-import { Input, initTWE } from "tw-elements";
+import Loginbutton from "./Components/Loginbutton";
 import Footer1 from "./Components/Footer1";
-
-import { Route, Routes } from "react-router-dom";
-import Login from "./Components/Login";
+import { Input, initTWE } from "tw-elements";
+import "tw-elements-react/dist/css/tw-elements-react.min.css";
 initTWE({ Input }, { allowReinits: true });
+
 function App() {
   const [news, setNews] = useState([]);
   const [Loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const [isLogin, setLogin] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 5000);
 
     const Hackernews = async () => {
       try {
@@ -43,39 +39,45 @@ function App() {
     setSearch(e.target.value);
   };
 
-  return (
-    <>
-      {/* <div className="container items-center"> */}
-      <div>
-        <div>
-          {/* so kann ich eine function in eine andere component rufen */}
-          <Header onsearchchange={handelChange} />
-        </div>
+  const handleLogin = () => {
+    setLogin(true);
+  };
 
-      {/* <div >
-        <Routes>
-          <Route path="login" element={<Login />} />
-        </Routes>
-      </div> */}
-        {Loading ? (
-          <div className="mb-4 inline-block max-w-sm">
-            <SpinnerRoundOutlined
-              size={69}
-              thickness={100}
-              speed={35}
-              color="#36ad47"
-            />
-          </div>
-        ) : (
-          <div>
-            <ListElement news={news} />
-          </div>
-        )}
-      </div>
-      
+  const handelLogout =()=>{
+
+    setLogin(false);
+  };
+
+  return (
+    <div>
+    <Router>
+      <Header onLogin={handleLogin} onSearchChange={handelChange} />
+
+      <Routes>
+        <Route path="login" element={<Loginbutton onLogout={handelLogout}/>} />
+        <Route
+          path="/"
+          element={
+            Loading ? (
+              <div className="mb-4 inline-block max-w-sm">
+                <SpinnerRoundOutlined
+                  size={69}
+                  thickness={100}
+                  speed={35}
+                  color="#36ad47"
+                />
+              </div>
+            ) : (
+              <div>
+                <ListElement news={news} />
+              </div>
+            )
+          }
+        />
+      </Routes>
       <Footer1 />
-    </>
-  );
+    </Router>
+    </div>  );
 }
 
 export default App;
