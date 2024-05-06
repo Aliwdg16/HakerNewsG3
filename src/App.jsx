@@ -13,7 +13,7 @@ initTWE({ Input }, { allowReinits: true });
 function App() {
   const [news, setNews] = useState([]);
   const [Loading, setLoading] = useState(false);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [isLogin, setLogin] = useState(false);
 
   useEffect(() => {
@@ -43,18 +43,16 @@ function App() {
     setLogin(true);
   };
 
-  const handelLogout =()=>{
-
+  const handelLogout = () => {
     setLogin(false);
   };
 
   return (
-    
     <Router>
       <Header onLogin={handleLogin} onSearchChange={handelsearch1} />
 
       <Routes>
-        <Route path="login" element={<Loginbutton onLogout={handelLogout}/>} />
+        <Route path="login" element={<Loginbutton onLogout={handelLogout} />} />
         <Route
           path="/"
           element={
@@ -77,7 +75,7 @@ function App() {
       </Routes>
       <Footer1 />
     </Router>
-     );
+  );
 }
 
 export default App;
